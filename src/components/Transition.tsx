@@ -36,6 +36,7 @@ const filteringAssignee = (assignee: string) => {
 export const Transition = () => {
   const [selectedAssignee, setSeletedAssignee] = useState<string>('')
   const [taskList, setTaskList] = useState<Task[]>(tasks);
+  const [isShowList, setIsShowList] = useState<boolean>(false);
   // const [isPending, startTransition] = useTransition();
 
   const onClickAssignee = (assignee: string) => {
@@ -55,7 +56,8 @@ export const Transition = () => {
     </div>
     <br />
     <button onClick={()=> onClickAssignee('')}>reset</button>
-<TaskList taskList={taskList} />
+    <button onClick={()=> setIsShowList(!isShowList)}>show/not</button>
+{isShowList && <TaskList taskList={taskList} />}
       </div>
   )
 }
